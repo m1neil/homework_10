@@ -1,5 +1,5 @@
 import PromoSection from '@/components/PromoSection/PromoSection'
-import busesBg from '@img/buses-bg.webp'
+import busesBg from '@img/buses-page-bg.webp'
 import BusesList from './components/BusesList/BusesList'
 function Buses() {
 	return (

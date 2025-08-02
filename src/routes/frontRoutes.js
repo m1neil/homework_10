@@ -3,11 +3,13 @@ const frontRoutes = {
 		home: '/',
 		buses: '/buses',
 		hotels: '/hotels',
+		cart: '/cart',
 	},
 	navigate: {
 		home: '/',
 		buses: '/buses',
 		hotels: '/hotels',
+		cart: '/cart',
 	},
 }
 

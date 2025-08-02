@@ -1,28 +1,33 @@
 import Rating from '@/components/Rating/Rating'
-import testImg from '@img/test-image-card.jpg'
 import styles from './HotelCard.module.scss'
 
-function HotelCard() {
+function HotelCard({ hotel }) {
+	const { id, name, city, stars, pricePerNight, image, description } = hotel
 	return (
 		<article className={styles['hotel-card']}>
 			<a className={styles['hotel-card__img']} href="#">
-				<img src={testImg} alt="Image" />
+				<img className="ibg" src={image} alt="preview hotel" />
 			</a>
-			<div className="hotel-card__body">
-				<h3 className="hotel-card__title">Name Hotel</h3>
-				<div className="hotel-card__info">
-					<div className="hotel-card__city">Paris</div>
-					<div className="hotel-card__price">$299.00/2days</div>
+			<div className={styles['hotel-card__body']}>
+				<h3 className={styles['hotel-card__title']}>{name}</h3>
+				<div className={styles['hotel-card__info']}>
+					<div className={styles['hotel-card__city']}>{city}</div>
+					<div className={styles['hotel-card__price']}>
+						${pricePerNight.toFixed(2)}/1days
+					</div>
 				</div>
-				<div className="hotel-card__text text">
-					<p>
-						Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore incididunt ut labore et dolore
-					</p>
+				<div className={`${styles['hotel-card__text']} text`}>
+					<p>{description}</p>
 				</div>
-				<div className="hotel-card__bottom">
-					<Rating curRating={3} />
-					<button type="button" className="hotel-card__button button">
+				<div className={styles['hotel-card__bottom']}>
+					<Rating
+						classSuffix={styles['hotel-card__rating']}
+						curRating={stars}
+					/>
+					<button
+						type="button"
+						className={`${styles['hotel-card__button']} button`}
+					>
 						<span>Booking now</span>
 					</button>
 				</div>

@@ -3,7 +3,16 @@ import { transformDate } from '@/utiles/transformData'
 import styles from './BusCard.module.scss'
 
 function BusCard({ bus }) {
-	const { image, name, price, seats, wifi, departureTime, rating } = bus
+	const {
+		image,
+		name,
+		price,
+		seats,
+		wifi,
+		departureTime,
+		rating,
+		description,
+	} = bus
 	return (
 		<article className={styles['bus-card']}>
 			<a href="#" className={styles['bus-card__img']}>
@@ -22,10 +31,7 @@ function BusCard({ bus }) {
 					<span>📶 Wi-Fi: {wifi ? 'Yes' : 'No'}</span>
 				</div>
 				<div className={`${styles['bus-card__text']} text`}>
-					<p>
-						Lorem ipsum dolor sit amet, consect adipiscing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore incididunt ut labore et dolore
-					</p>
+					<p>{description}</p>
 				</div>
 				<div className={styles['bus-card__bottom']}>
 					<Rating classSuffix={styles['bus-card__rating']} curRating={rating} />

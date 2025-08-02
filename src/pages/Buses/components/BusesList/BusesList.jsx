@@ -12,7 +12,7 @@ function BusesList() {
 			<div className="buses-list__container">
 				<HeadBlockSection
 					classSuffix={styles['buses-list__head-block']}
-					title={'Popular Destination'}
+					title="Available buses"
 					text={'orem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna'.split(
 						'\n'
 					)}

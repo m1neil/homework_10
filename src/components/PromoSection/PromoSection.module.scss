@@ -24,6 +24,9 @@
 	}
 	// .promo__title
 	&__title {
+		text-transform: capitalize;
+		text-align: center;
+		max-inline-size: toRem(780);
 		&:not(:last-child) {
 			margin-bottom: toRem(30);
 		}
