@@ -1,0 +1,42 @@
+@use "@styles/base/_mixins.scss" as *;
+
+.breadcrumbs {
+	display: flex;
+	column-gap: toRem(10);
+	&__item {
+		&:not(:last-child) {
+			position: relative;
+			padding-inline-end: toRem(21);
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				inset-inline-end: 0;
+				inline-size: toRem(11);
+				block-size: toRem(2);
+				background-color: #fff;
+			}
+			&::before {
+				inset-block-start: toRem(8);
+				transform: rotate(45deg);
+			}
+			&::after {
+				inset-block-end: toRem(7.5);
+				transform: rotate(-45deg);
+			}
+		}
+	}
+	&__link {
+		font-weight: 500;
+		font-size: toRem(24);
+		color: #fff;
+		&:is(a) {
+			transition: color 0.3s;
+			@media (any-hover: hover) {
+				&:hover {
+					color: #dfdfdf;
+				}
+			}
+		}
+	}
+}

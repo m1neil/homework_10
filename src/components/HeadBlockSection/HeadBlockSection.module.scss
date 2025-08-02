@@ -1,0 +1,13 @@
+.head-block {
+	// .head-block__content
+	&__content {
+	}
+	// .head-block__title
+	&__title {
+		margin-bottom: toRem(14);
+	}
+	// .head-block__text
+	&__text {
+		max-inline-size: toRem(580);
+	}
+}

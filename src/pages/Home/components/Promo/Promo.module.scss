@@ -1,0 +1,41 @@
+@use "@styles/base/_mixins.scss" as *;
+
+.promo {
+	position: relative;
+	&::before {
+		content: "";
+		position: absolute;
+		inline-size: 100%;
+		block-size: 100%;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+		backdrop-filter: blur(toRem(2.5));
+		z-index: -1;
+	}
+	&__container {
+		position: relative;
+		padding-block: toRem(120);
+		min-height: 100svh;
+		display: flex;
+		align-items: center;
+	}
+	&__content {
+		flex-basis: toRem(736);
+	}
+	&__title {
+		margin-bottom: toRem(37);
+	}
+	&__text {
+		&:not(:last-child) {
+			margin-bottom: toRem(20);
+		}
+	}
+	&__button {
+	}
+	&__bg {
+		position: absolute;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+		z-index: -2;
+	}
+}

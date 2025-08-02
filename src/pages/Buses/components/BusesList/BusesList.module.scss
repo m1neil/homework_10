@@ -1,0 +1,21 @@
+@use "@styles/base/_mixins.scss" as *;
+
+.buses-list {
+	padding-block: toRem(60);
+	// .buses-list__container
+	&__container {
+	}
+	// .buses-list__head-block
+	&__head-block {
+		&:not(:last-child) {
+			margin-bottom: toRem(40);
+		}
+	}
+	// .buses-list__items
+	&__items {
+		display: grid;
+		row-gap: toRem(28);
+		column-gap: toRem(18);
+		grid-template-columns: repeat(auto-fill, minmax(toRem(330), 1fr));
+	}
+}

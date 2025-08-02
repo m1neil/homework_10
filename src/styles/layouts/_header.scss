@@ -1,0 +1,58 @@
+@use "@styles/base/_mixins.scss" as *;
+
+.header {
+	position: fixed;
+	width: 100%;
+	top: 0;
+	left: 0;
+	background-color: rgba(18, 11, 11, 0.51);
+	z-index: 50;
+	// .header__container
+	&__container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: toRem(30);
+		min-height: toRem(80);
+		padding-block: toRem(10);
+	}
+	// .header__logo
+	&__logo {
+		width: toRem(350);
+		flex-shrink: 0;
+		img {
+			width: 100%;
+		}
+	}
+	// .header__menu
+	&__menu {
+	}
+}
+.menu {
+	// .menu__list
+	&__list {
+		display: flex;
+		justify-content: flex-end;
+		column-gap: toRem(67);
+		row-gap: toRem(5);
+		flex-wrap: wrap;
+	}
+	// .menu__item
+	&__item {
+	}
+	// .menu__link
+	&__link {
+		font-weight: 600;
+		color: rgba(255, 255, 255, 0.8);
+		transition: color 0.3s;
+		// .menu__link--active
+		&--active {
+			color: #fff;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				color: #fff;
+			}
+		}
+	}
+}

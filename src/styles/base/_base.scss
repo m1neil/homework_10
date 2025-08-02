@@ -1,0 +1,82 @@
+@use "./mixins" as *;
+
+.ibg {
+	inline-size: 100%;
+	block-size: 100%;
+	object-fit: cover;
+}
+//===========================================================================
+.title {
+	font-weight: 600;
+	font-size: toRem(60);
+	line-height: 1.16667;
+	color: var(--text-accent);
+	&--big {
+		font-weight: 700;
+		font-size: toRem(90);
+	}
+	&--fz-64 {
+		font-size: toRem(64);
+	}
+	&--white {
+		color: #fff;
+	}
+}
+//===========================================================================
+.button {
+	position: relative;
+	display: inline-flex;
+	padding: toRem(19) toRem(25);
+	border-radius: toRem(28);
+	font-weight: 600;
+	color: #fff;
+	background-color: var(--text-accent);
+	overflow: hidden;
+	transition:
+		color 0.4s,
+		background-color 0s;
+	span {
+		position: relative;
+		z-index: 1;
+	}
+	&::before {
+		content: "";
+		position: absolute;
+		inline-size: 100%;
+		aspect-ratio: 1;
+		inset-block-start: 50%;
+		inset-inline-start: 50%;
+		background-color: #fff;
+		border-radius: 50%;
+		transform: translate(-50%, -50%) scale(0);
+		will-change: transform;
+		transition:
+			transform 0.4s,
+			opacity 0.4s;
+		opacity: 0;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			color: var(--text-accent);
+			background-color: #fff;
+			transition:
+				color 0.4s,
+				background-color 0.2s 0.2s;
+			&::before {
+				transform: translate(-50%, -50%) scale(1);
+				opacity: 1;
+			}
+		}
+	}
+}
+//===========================================================================
+.text {
+	font-weight: 500;
+	line-height: 1.5;
+	&--light {
+		color: #cfcfcf;
+	}
+	p:not(:last-child) {
+		margin-bottom: toRem(5);
+	}
+}
