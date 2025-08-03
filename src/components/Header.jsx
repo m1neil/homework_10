@@ -5,15 +5,15 @@ import { Link, NavLink } from 'react-router'
 import ToggleTheme from './ToggleTheme/ToggleTheme'
 
 function Header() {
-	const links = routes[0].children
-		.filter(route => route?.handle?.title)
-		.map(route => ({ title: route.handle.title, path: route.path }))
-
 	const getNavLinkClass = ({ isActive }) => {
 		let className = 'menu__link'
 		if (isActive) className += ' menu__link--active'
 		return className
 	}
+
+	const links = routes[0].children
+		.filter(route => route?.handle?.title)
+		.map(route => ({ title: route.handle.title, path: route.path }))
 
 	return (
 		<div className="header">
@@ -29,7 +29,11 @@ function Header() {
 					<ul className="menu__list">
 						{links.map(({ title, path }, i) => (
 							<li key={i} className="menu__item">
-								<NavLink to={path} className={getNavLinkClass}>
+								<NavLink
+									to={path}
+									className={getNavLinkClass}
+									preventScrollReset={false}
+								>
 									{title}
 								</NavLink>
 							</li>
