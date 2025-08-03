@@ -1,14 +1,17 @@
 import Layout from '@/layouts/Layout'
 import Buses from '@/pages/Buses/Buses'
 import Cart from '@/pages/Cart/Cart'
+import ErrorPage from '@/pages/ErrorPage/ErrorPage'
 import Home from '@/pages/Home/Home'
 import Hotels from '@/pages/Hotels/Hotels'
+import Page404 from '@/pages/Page404/Page404'
 import { createBrowserRouter } from 'react-router'
 import frontRoutes from './frontRoutes'
 
 export const routes = [
 	{
-		element: <Layout />,
+		Component: Layout,
+		errorElement: <ErrorPage />,
 		path: frontRoutes.pages.home,
 		handle: {
 			title: 'Home',
@@ -46,6 +49,10 @@ export const routes = [
 					title: 'Cart',
 					crumbLink: frontRoutes.navigate.cart,
 				},
+			},
+			{
+				path: '*',
+				Component: Page404,
 			},
 		],
 	},

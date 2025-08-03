@@ -1,0 +1,18 @@
+@use "@styles/base/_mixins.scss" as *;
+
+.error-page {
+	// .error-page__container
+	&__container {
+		padding-block: toRem(120);
+		min-block-size: 100svh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		row-gap: toRem(40);
+	}
+	// .error-page__title
+	&__title {
+		transition: color 0.3s;
+	}
+}
