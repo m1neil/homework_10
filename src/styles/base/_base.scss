@@ -55,6 +55,12 @@
 			opacity 0.4s;
 		opacity: 0;
 	}
+	&--red {
+		background-color: red;
+	}
+	&--small {
+		padding-block: toRem(12);
+	}
 	@media (any-hover: hover) {
 		&:hover {
 			color: var(--text-accent);

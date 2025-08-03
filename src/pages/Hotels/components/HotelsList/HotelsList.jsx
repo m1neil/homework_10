@@ -5,8 +5,10 @@ import { HotelsContext } from '@/context/HotelsContext'
 import { CART_KEYS } from '@/reducers/cartReducer'
 import { useContext } from 'react'
 import styles from './HotelsList.module.scss'
+import { CartContext } from '@/context/CartContext'
 
 function HotelsList() {
+	const { cartState } = useContext(CartContext)
 	const hotels = useContext(HotelsContext)
 
 	return (
@@ -29,6 +31,7 @@ function HotelsList() {
 									keyCartService={CART_KEYS.HOTELS}
 									title={name}
 									rating={stars}
+									isOrdered={cartState[CART_KEYS.HOTELS].includes(id)}
 									{...hotel}
 								>
 									<div

@@ -6,7 +6,9 @@
 	}
 	// .head-block__title
 	&__title {
-		margin-bottom: toRem(14);
+		&:not(:last-child) {
+			margin-bottom: toRem(14);
+		}
 	}
 	// .head-block__text
 	&__text {

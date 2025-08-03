@@ -11,16 +11,23 @@ function CardService({
 	title,
 	rating,
 	description,
+	isOrdered,
 	children,
 }) {
-	const { cartState, dispatch } = useContext(CartContext)
+	const { dispatch } = useContext(CartContext)
 
 	const onAddServiceToCart = () => {
-		if (cartState[keyCartService].includes(id)) return
-		dispatch({
-			type: CART_ACTION_TYPES.ADD,
-			payload: { idItem: id, key: keyCartService },
-		})
+		if (isOrdered) {
+			dispatch({
+				type: CART_ACTION_TYPES.REMOVE,
+				payload: { idItem: id, key: keyCartService },
+			})
+		} else {
+			dispatch({
+				type: CART_ACTION_TYPES.ADD,
+				payload: { idItem: id, key: keyCartService },
+			})
+		}
 	}
 
 	return (
@@ -38,10 +45,12 @@ function CardService({
 					<Rating classSuffix={styles['card__rating']} curRating={rating} />
 					<button
 						type="button"
-						className={`${styles['card__button']} button`}
+						className={`${styles['card__button']} button ${
+							isOrdered ? 'button--red' : ''
+						}`}
 						onClick={onAddServiceToCart}
 					>
-						<span>Booking now</span>
+						<span>{isOrdered ? 'Cancel order' : 'Booking now'} </span>
 					</button>
 				</div>
 			</div>

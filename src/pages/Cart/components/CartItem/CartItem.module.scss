@@ -1,0 +1,67 @@
+@use "@styles/base/_mixins.scss" as *;
+
+.card-cart {
+	display: flex;
+	// .card-cart__img
+	&__img {
+		flex-basis: toRem(220);
+		aspect-ratio: 220 / 220;
+		border-radius: toRem(10) 0 0 toRem(10);
+		overflow: hidden;
+		img {
+			block-size: 100%;
+			inline-size: 100%;
+			object-fit: cover;
+			transition: transform 0.3s;
+			will-change: transform;
+			@media (any-hover: hover) {
+				&:hover {
+					transform: scale(1.05);
+				}
+			}
+		}
+	}
+	// .card-cart__content
+	&__content {
+		flex-grow: 1;
+		padding: toRem(20);
+		background-color: #fff;
+		border-radius: 0 toRem(10) toRem(10) 0;
+		box-shadow: 0 toRem(5) toRem(20) 0 rgba(0, 0, 0, 0.1);
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: flex-start;
+	}
+	// .card-cart__title
+	&__title {
+		font-weight: 600;
+		font-size: toRem(24);
+		color: var(--text-accent);
+		margin-bottom: toRem(15);
+	}
+	// .card-cart__price
+	&__price {
+		font-weight: 400;
+		font-size: toRem(20);
+		color: var(--text-accent);
+		margin-bottom: toRem(14);
+	}
+	// .card-cart__date
+	&__date {
+		font-size: toRem(16);
+		margin-bottom: toRem(14);
+	}
+	// .card-cart__info
+	&__info {
+		color: var(--text-accent);
+		font-weight: 500;
+		margin-bottom: toRem(15);
+	}
+	&__rating {
+		margin-bottom: toRem(15);
+	}
+	// .card-cart__button
+	&__button {
+	}
+}

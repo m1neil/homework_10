@@ -1,0 +1,17 @@
+@use "@styles/base/_mixins.scss" as *;
+
+.cart-list {
+	padding-block: toRem(60);
+	&__section {
+		&:not(:last-child) {
+			margin-bottom: toRem(30);
+		}
+	}
+	&__head {
+		margin-block-end: toRem(40);
+	}
+	&__items {
+		display: grid;
+		row-gap: toRem(25);
+	}
+}

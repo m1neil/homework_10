@@ -2,12 +2,14 @@ import CardService from '@/components/CardService/CardService'
 import stylesCardServices from '@/components/CardService/CardService.module.scss'
 import HeadBlockSection from '@/components/HeadBlockSection/HeadBlockSection'
 import { BasesContext } from '@/context/BasesContext'
+import { CartContext } from '@/context/CartContext'
 import { CART_KEYS } from '@/reducers/cartReducer'
-import { transformDate } from '@/utiles/transformData'
+import { transformDate } from '@/utils/transformData'
 import { useContext } from 'react'
 import styles from './BusesList.module.scss'
 
 function BusesList() {
+	const { cartState } = useContext(CartContext)
 	const bases = useContext(BasesContext)
 
 	return (
@@ -29,6 +31,7 @@ function BusesList() {
 									key={id}
 									keyCartService={CART_KEYS.BUSES}
 									title={name}
+									isOrdered={cartState[CART_KEYS.BUSES].includes(id)}
 									{...bus}
 								>
 									<div className={stylesCardServices['card__price']}>

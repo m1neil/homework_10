@@ -2,8 +2,10 @@ import HeadBlockSection from '@/components/HeadBlockSection/HeadBlockSection'
 import { BasesContext } from '@/context/BasesContext'
 import { CartContext } from '@/context/CartContext'
 import { HotelsContext } from '@/context/HotelsContext'
-import { CART_KEYS } from '@/reducers/cartReducer'
+import { CART_ACTION_TYPES, CART_KEYS } from '@/reducers/cartReducer'
 import { useContext } from 'react'
+import CartItem from '../CartItem/CartItem'
+import styles from './CartList.module.scss'
 
 function CartList() {
 	const { cartState, dispatch } = useContext(CartContext)
@@ -17,14 +19,59 @@ function CartList() {
 		cartState[CART_KEYS.HOTELS].includes(hotel.id)
 	)
 
-	console.log('busesCart', busesCart)
-	console.log('hotelsCart', hotelsCart)
+	const onDeleteItem = (idElement, keyCart) => {
+		dispatch({
+			type: CART_ACTION_TYPES.REMOVE,
+			payload: { idItem: idElement, key: keyCart },
+		})
+	}
 
 	return (
-		<div className="cart-list">
+		<div className={styles['cart-list']}>
 			<div className="cart-list__container">
-				<HeadBlockSection title="User hotels" />
-				{/* {hotelsCart.length > 0 ? : <div>The hotel list is empty!</div>} */}
+				<section className={styles['cart-list__section']}>
+					<HeadBlockSection
+						title="User hotels"
+						classSuffix={styles['cart-list__head']}
+					/>
+					{hotelsCart.length > 0 ? (
+						<div className={styles['cart-list__items']}>
+							{hotelsCart.map(itemCart => (
+								<CartItem
+									key={itemCart.id}
+									keyCartService={CART_KEYS.HOTELS}
+									price={itemCart.pricePerNight.toFixed(2)}
+									rating={itemCart.stars}
+									onDelete={onDeleteItem}
+									{...itemCart}
+								/>
+							))}
+						</div>
+					) : (
+						<div>The hotel list is empty!</div>
+					)}
+				</section>
+				<section className={styles['cart-list__section']}>
+					<HeadBlockSection
+						title="User bases"
+						classSuffix={styles['cart-list__head']}
+					/>
+					{busesCart.length > 0 ? (
+						<div className={styles['cart-list__items']}>
+							{busesCart.map(itemCart => (
+								<CartItem
+									key={itemCart.id}
+									keyCartService={CART_KEYS.BUSES}
+									price={itemCart.price.toFixed(2)}
+									onDelete={onDeleteItem}
+									{...itemCart}
+								/>
+							))}
+						</div>
+					) : (
+						<div>The bases list is empty!</div>
+					)}
+				</section>
 			</div>
 		</div>
 	)
