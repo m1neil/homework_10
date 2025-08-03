@@ -1,7 +1,9 @@
+import CardService from '@/components/CardService/CardService'
+import stylesCardService from '@/components/CardService/CardService.module.scss'
 import HeadBlockSection from '@/components/HeadBlockSection/HeadBlockSection'
 import { HotelsContext } from '@/context/HotelsContext'
+import { CART_KEYS } from '@/reducers/cartReducer'
 import { useContext } from 'react'
-import HotelCard from '../HotelCard/HotelCard'
 import styles from './HotelsList.module.scss'
 
 function HotelsList() {
@@ -19,9 +21,29 @@ function HotelsList() {
 				/>
 				{hotels.length > 0 ? (
 					<div className={styles['hotel__items']}>
-						{hotels.map(hotel => (
-							<HotelCard key={hotel.id} hotel={hotel} />
-						))}
+						{hotels.map(hotel => {
+							const { id, name, city, stars, pricePerNight } = hotel
+							return (
+								<CardService
+									key={id}
+									keyCartService={CART_KEYS.HOTELS}
+									title={name}
+									rating={stars}
+									{...hotel}
+								>
+									<div
+										className={`${stylesCardService['card__sub-head']} ${stylesCardService['sub-head']}`}
+									>
+										<div className={stylesCardService['sub-head__city']}>
+											{city}
+										</div>
+										<div className={stylesCardService['sub-head__price']}>
+											${pricePerNight.toFixed(2)}/1days
+										</div>
+									</div>
+								</CardService>
+							)
+						})}
 					</div>
 				) : (
 					<div>The list of free hotels is empty!</div>

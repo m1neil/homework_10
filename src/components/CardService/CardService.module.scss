@@ -67,6 +67,7 @@
 	}
 	// .card__sub-head
 	&__sub-head {
+		margin-bottom: toRem(15);
 	}
 	// .card__text
 	&__text {
@@ -92,8 +93,16 @@
 }
 
 .sub-head {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	color: var(--text-accent);
+	column-gap: toRem(15);
 	&__city {
+		font-weight: 600;
+		font-size: toRem(20);
 	}
 	&__price {
+		font-size: toRem(18);
 	}
 }
