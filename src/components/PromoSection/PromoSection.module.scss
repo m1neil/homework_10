@@ -40,26 +40,29 @@
 		inset-block-start: 0;
 		inset-inline-start: 0;
 		z-index: -2;
+		background-color: #000;
 	}
 	&__img {
 		position: absolute;
 		inset-block-start: 0;
 		inset-inline-start: 0;
-		transition: opacity 0.3s;
+		transition: opacity 0.5s;
 		&--dark {
-			z-index: 1;
 			opacity: 0;
 		}
 		&--light {
+			z-index: 1;
 		}
 	}
 	&.--dark {
 		.promo__img {
 			&--dark {
 				opacity: 1;
+				z-index: 1;
 			}
 			&--light {
 				opacity: 0;
+				z-index: 0;
 			}
 		}
 	}
