@@ -1,9 +1,14 @@
 import Rating from '@/components/Rating/Rating'
+import { CartContext } from '@/context/CartContext'
+import { CART_ACTION_TYPES, CART_KEYS } from '@/reducers/cartReducer'
 import { transformDate } from '@/utiles/transformData'
+import { useContext } from 'react'
 import styles from './BusCard.module.scss'
 
 function BusCard({ bus }) {
+	const { cartState, dispatch } = useContext(CartContext)
 	const {
+		id,
 		image,
 		name,
 		price,
@@ -13,6 +18,15 @@ function BusCard({ bus }) {
 		rating,
 		description,
 	} = bus
+
+	const onAddBus = () => {
+		if (cartState[CART_KEYS.BUSES].includes(id)) return
+		dispatch({
+			type: CART_ACTION_TYPES.ADD,
+			payload: { idItem: id, key: CART_KEYS.BUSES },
+		})
+	}
+
 	return (
 		<article className={styles['bus-card']}>
 			<a href="#" className={styles['bus-card__img']}>
@@ -38,6 +52,7 @@ function BusCard({ bus }) {
 					<button
 						type="button"
 						className={`${styles['bus-card__button']} button`}
+						onClick={onAddBus}
 					>
 						<span>Booking now</span>
 					</button>

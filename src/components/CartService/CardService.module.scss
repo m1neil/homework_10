@@ -1,0 +1,99 @@
+@use "@styles/base/_mixins.scss" as *;
+
+.card {
+	display: flex;
+	flex-direction: column;
+	// .card__img
+	&__img {
+		display: block;
+		aspect-ratio: 444/319;
+		border-radius: toRem(10) toRem(10) 0 0;
+		overflow: hidden;
+		background-color: lightgray;
+		img {
+			will-change: transform;
+			transition: transform 0.3s;
+			@media (any-hover: hover) {
+				&:hover {
+					transform: scale(1.05);
+				}
+			}
+		}
+	}
+	&__body {
+		flex-grow: 1;
+		background-color: #fff;
+		box-shadow: 0 toRem(5) toRem(20) 0 rgba(0, 0, 0, 0.1);
+		padding: toRem(30) toRem(28);
+		border-radius: 0 0 toRem(10) toRem(10);
+		display: flex;
+		flex-direction: column;
+	}
+	// .card__row
+	&__row {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		column-gap: toRem(15);
+	}
+	// .card__title
+	&__title {
+		font-size: toRem(24);
+		color: var(--text-accent);
+		font-weight: 600;
+		flex-shrink: 0;
+		margin-bottom: toRem(13);
+	}
+	// .card__price
+	&__price {
+		font-size: toRem(24);
+		color: var(--text-accent);
+		flex-shrink: 0;
+		margin-bottom: toRem(15);
+	}
+	// .card__date
+	&__date {
+		font-size: toRem(15);
+		margin-bottom: toRem(12);
+	}
+	// .card__info
+	&__info {
+		display: flex;
+		column-gap: toRem(15);
+		color: var(--text-accent);
+		font-size: toRem(15);
+		font-weight: 500;
+		margin-bottom: toRem(10);
+	}
+	// .card__sub-head
+	&__sub-head {
+	}
+	// .card__text
+	&__text {
+		font-size: toRem(14);
+		margin-bottom: toRem(10);
+		flex-grow: 1;
+	}
+	// .card__bottom
+	&__bottom {
+		display: flex;
+		justify-content: space-between;
+		column-gap: toRem(20);
+		align-items: center;
+	}
+	// .card__rating
+	&__rating {
+		flex-shrink: 0;
+	}
+	// .card__button
+	&__button {
+		flex-shrink: 0;
+	}
+}
+
+.sub-head {
+	&__city {
+	}
+	&__price {
+	}
+}
