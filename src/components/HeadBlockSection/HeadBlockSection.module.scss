@@ -6,12 +6,14 @@
 	}
 	// .head-block__title
 	&__title {
+		transition: color 0.3s;
 		&:not(:last-child) {
 			margin-bottom: toRem(14);
 		}
 	}
 	// .head-block__text
 	&__text {
+		transition: color 0.3s;
 		max-inline-size: toRem(580);
 	}
 }

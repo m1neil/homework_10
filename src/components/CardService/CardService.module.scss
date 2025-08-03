@@ -10,6 +10,9 @@
 		border-radius: toRem(10) toRem(10) 0 0;
 		overflow: hidden;
 		background-color: lightgray;
+		.--dark & {
+			background-color: gray;
+		}
 		img {
 			will-change: transform;
 			transition: transform 0.3s;
@@ -28,6 +31,12 @@
 		border-radius: 0 0 toRem(10) toRem(10);
 		display: flex;
 		flex-direction: column;
+		transition:
+			background-color 0.3s,
+			color 0.3s;
+		.--dark & {
+			background-color: #181c27;
+		}
 	}
 	// .card__row
 	&__row {
@@ -43,6 +52,7 @@
 		font-weight: 600;
 		flex-shrink: 0;
 		margin-bottom: toRem(13);
+		transition: color 0.3s;
 	}
 	// .card__price
 	&__price {
@@ -50,11 +60,13 @@
 		color: var(--text-accent);
 		flex-shrink: 0;
 		margin-bottom: toRem(15);
+		transition: color 0.3s;
 	}
 	// .card__date
 	&__date {
 		font-size: toRem(15);
 		margin-bottom: toRem(12);
+		transition: color 0.3s;
 	}
 	// .card__info
 	&__info {
@@ -64,6 +76,7 @@
 		font-size: toRem(15);
 		font-weight: 500;
 		margin-bottom: toRem(10);
+		transition: color 0.3s;
 	}
 	// .card__sub-head
 	&__sub-head {
@@ -97,6 +110,7 @@
 	justify-content: space-between;
 	align-items: center;
 	color: var(--text-accent);
+	transition: color 0.3s;
 	column-gap: toRem(15);
 	&__city {
 		font-weight: 600;

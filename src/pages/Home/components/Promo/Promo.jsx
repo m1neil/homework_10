@@ -1,11 +1,14 @@
+import { useToggleThemeContext } from '@/context/ToggleThemeContext/useToggleThemeContext'
 import frontRoutes from '@/routes/frontRoutes'
+import backgroundImgDark from '@img/promo-dark.webp'
 import backgroundImg from '@img/promo.webp'
 import { Link } from 'react-router'
 import styles from './Promo.module.scss'
 
 function Promo() {
+	const { isDark } = useToggleThemeContext()
 	return (
-		<section className={styles['promo']}>
+		<section className={`${styles['promo']} ${isDark ? styles['--dark'] : ''}`}>
 			<div className={styles['promo__container']}>
 				<div className={styles['promo__content']}>
 					<h1
@@ -23,12 +26,20 @@ function Promo() {
 					</Link>
 				</div>
 			</div>
-			<img
-				className={`${styles['promo__bg']} ibg`}
-				src={backgroundImg}
-				alt="background image"
-				aria-hidden="true"
-			/>
+			<div className={styles['promo__bg']}>
+				<img
+					className={`${styles['promo__img']} ${styles['promo__img--light']}`}
+					src={backgroundImg}
+					alt="background image"
+					aria-hidden="true"
+				/>
+				<img
+					className={`${styles['promo__img']} ${styles['promo__img--dark']}`}
+					src={backgroundImgDark}
+					alt="background image"
+					aria-hidden="true"
+				/>
+			</div>
 		</section>
 	)
 }

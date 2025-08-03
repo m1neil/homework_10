@@ -1,4 +1,5 @@
 import Rating from '@/components/Rating/Rating'
+import { useToggleThemeContext } from '@/context/ToggleThemeContext/useToggleThemeContext'
 import { transformDate } from '@/utils/transformData'
 import styles from './CartItem.module.scss'
 
@@ -14,8 +15,11 @@ function CartItem({
 	rating,
 	onDelete,
 }) {
+	const { isDark } = useToggleThemeContext()
 	return (
-		<article className={styles['card-cart']}>
+		<article
+			className={`${styles['card-cart']} ${isDark ? styles['--dark'] : ''}`}
+		>
 			<a href="#" className={styles['card-cart__img']}>
 				<img className="img" src={image} alt="Image" />
 			</a>

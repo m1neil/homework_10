@@ -1,4 +1,5 @@
 import { CartContext } from '@/context/CartContext'
+import { useToggleThemeContext } from '@/context/ToggleThemeContext/useToggleThemeContext'
 import { CART_ACTION_TYPES } from '@/reducers/cartReducer'
 import { useContext } from 'react'
 import Rating from '../Rating/Rating'
@@ -15,6 +16,7 @@ function CardService({
 	children,
 }) {
 	const { dispatch } = useContext(CartContext)
+	const { isDark } = useToggleThemeContext()
 
 	const onAddServiceToCart = () => {
 		if (isOrdered) {
@@ -31,7 +33,7 @@ function CardService({
 	}
 
 	return (
-		<article className={styles['card']}>
+		<article className={`${styles['card']} ${isDark ? styles['--dark'] : ''}`}>
 			<a href="#" className={styles['card__img']}>
 				<img className="ibg" src={image} alt="Image" />
 			</a>
@@ -46,7 +48,7 @@ function CardService({
 					<button
 						type="button"
 						className={`${styles['card__button']} button ${
-							isOrdered ? 'button--red' : ''
+							isOrdered ? 'button--green' : ''
 						}`}
 						onClick={onAddServiceToCart}
 					>

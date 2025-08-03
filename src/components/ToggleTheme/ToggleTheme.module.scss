@@ -1,0 +1,66 @@
+@use "@styles/base/_mixins.scss" as *;
+
+.toggle-theme {
+	flex-shrink: 0;
+	position: relative;
+	inline-size: toRem(60);
+	block-size: toRem(30);
+	border-radius: toRem(50);
+	overflow: hidden;
+	&__handler {
+		position: absolute;
+		inline-size: toRem(22);
+		aspect-ratio: 1;
+		inset-block-start: 50%;
+		inset-inline-start: toRem(5);
+		transform: translateY(-50%);
+		z-index: 2;
+		transition: inset-inline-start 0.3s;
+		img {
+			position: absolute;
+			inline-size: 100%;
+			block-size: 100%;
+			inset-block-start: 0;
+			inset-inline-start: 0;
+			object-fit: contain;
+			transition: opacity 0.3s;
+		}
+	}
+	&__sun {
+	}
+	&__moon {
+		opacity: 0;
+	}
+	&__bg {
+		position: absolute;
+		inline-size: 100%;
+		block-size: 100%;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+		object-fit: cover;
+		transition: opacity 0.3s;
+		&--light {
+		}
+		&--dark {
+			z-index: 1;
+			opacity: 0;
+		}
+	}
+	&.--dark {
+		.toggle-theme__handler {
+			inset-inline-start: calc(100% - toRem(27));
+		}
+		.toggle-theme__bg--dark {
+			opacity: 1;
+		}
+		.toggle-theme__bg--light {
+			opacity: 0;
+		}
+		.toggle-theme__moon {
+			opacity: 1;
+		}
+		.toggle-theme__sun {
+			opacity: 0;
+		}
+	}
+}

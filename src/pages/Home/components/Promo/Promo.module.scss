@@ -34,8 +34,37 @@
 	}
 	&__bg {
 		position: absolute;
+		inline-size: 100%;
+		block-size: 100%;
 		inset-block-start: 0;
 		inset-inline-start: 0;
 		z-index: -2;
+	}
+	&__img {
+		position: absolute;
+		inset-block-start: 0;
+		inset-inline-start: 0;
+		inline-size: 100%;
+		block-size: 100%;
+		object-fit: cover;
+		transition: opacity 0.3s;
+		&--light {
+			opacity: 1;
+		}
+		&--dark {
+			opacity: 0;
+			z-index: 1;
+		}
+	}
+	&.--dark {
+		.promo__img {
+			&--dark {
+				opacity: 1;
+				transform: scale(1);
+			}
+			&--light {
+				opacity: 0;
+			}
+		}
 	}
 }

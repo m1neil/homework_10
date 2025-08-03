@@ -2,6 +2,7 @@ import frontRoutes from '@/routes/frontRoutes'
 import { routes } from '@/routes/router'
 import logoSite from '@img/logo.png'
 import { Link, NavLink } from 'react-router'
+import ToggleTheme from './ToggleTheme/ToggleTheme'
 
 function Header() {
 	const links = routes[0].children
@@ -35,6 +36,7 @@ function Header() {
 						))}
 					</ul>
 				</nav>
+				<ToggleTheme />
 			</div>
 		</div>
 	)
